@@ -8,6 +8,7 @@ Create a Python 3 virtual environment and install dependencies listed in `requir
 
 ```bash
 $ python3 -m venv venv
+$ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
@@ -16,10 +17,11 @@ $ pip install -r requirements.txt
 First obtain the API token from Slack website. Then obtain the bot id by running `print_bot_id.py`.
 
 ```bash
-$ SLACK_BOT_TOKEN=<the-token> python print_bot_id.py
+$ SLACK_BOT_TOKEN=<token> python print_bot_id.py
 ```
 
 Then run the main script `enigma.py`.
 
 ```bash
-$ SLACK_BOT_TOKEN=<the-token> BOT_ID=<bot-id> python enigma.py```
+$ SLACK_BOT_TOKEN=<token> BOT_ID=<bot-id> python enigma.py
+```
