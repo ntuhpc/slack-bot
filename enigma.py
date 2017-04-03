@@ -1,6 +1,7 @@
 import os
 import time
 from slackclient import SlackClient
+from handlers import *
 
 BOT_ID = os.environ.get("BOT_ID")
 AT_BOT = "<@" + BOT_ID + ">"
@@ -8,15 +9,21 @@ AT_BOT = "<@" + BOT_ID + ">"
 slack_client = SlackClient(os.environ.get("SLACK_BOT_TOKEN"))
 
 def handle_command(command, channel):
+    """
+    Delegates commands to various handlers
+    """
     # TODO: add logic for handling different commands for different channels
     # hint: use groups.list and channel.list API call
     response = "Invalid command"
     if command.startswith("isc17"):
-        response = "ISC17 coding challenge难产了"
+        response = check_isc17_coding_challenge()
     slack_client.api_call("chat.postMessage", channel=channel,
             text=response, as_user=True)
 
 def parse_slack_output(slack_rtm_output):
+    """
+    Parse slack output to get command and channel
+    """
     output_list = slack_rtm_output
     if output_list and len(output_list) > 0:
         for output in output_list:
