@@ -14,9 +14,10 @@ def handle_command(command, channel):
     """
     # TODO: add logic for handling different commands for different channels
     # hint: use groups.list and channel.list API call
-    response = "Invalid command"
     if command.startswith("isc17"):
         response = check_isc17_coding_challenge()
+    else:
+        response = pick_a_quotation()
     slack_client.api_call("chat.postMessage", channel=channel,
             text=response, as_user=True)
 
