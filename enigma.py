@@ -36,7 +36,7 @@ def parse_slack_output(slack_rtm_output):
 
 if __name__ == "__main__":
     READ_WEBSOCKET_DELAY = 1
-    if slack_client.rtm_connect():
+    if slack_client.rtm_connect(auto_reconnect=True):
         print("Enigma connected and running...")
         while True:
             command, channel = parse_slack_output(slack_client.rtm_read())
